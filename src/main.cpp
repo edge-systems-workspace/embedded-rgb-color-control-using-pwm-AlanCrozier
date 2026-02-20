@@ -1,57 +1,81 @@
-#include <Arduino.h>
 /**
- * @file main.cpp
- * @brief Embedded RGB LED Control (Digital + PWM)
- * @author YOUR_NAME
- * @date YYYY-MM-DD
+ * @file RGB_LED_Color_Cycle.ino
+ * @brief RGB LED color sequence using Arduino.
  *
- * @details
- * Controls RGB LED using digital ON/OFF
- * and analog PWM brightness control.
+ * This program cycles an RGB LED through multiple colors:
+ * Red, Green, Blue, Brown (Red+Green), Purple (Red+Blue),
+ * Cyan (Green+Blue), and White (All colors).
+ *
+ * @author Bhartendu Ji
+ * @date 18 Feb 2026
  */
 
- // TODO 1:
- // Define RED pin (Use 9)
+#include <Arduino.h>
 
- // TODO 2:
- // Define GREEN pin (Use 10)
+/** @brief Pin definitions for RGB LED */
+int red_led = 10;    ///< Red LED connected to digital pin 10
+int green_led = 9;   ///< Green LED connected to digital pin 9
+int blue_led = 11;   ///< Blue LED connected to digital pin 11
 
- // TODO 3:
- // Define BLUE pin (Use 11)
-
+/**
+ * @brief Initializes LED pins as output.
+ *
+ * This function runs once when the Arduino starts.
+ * It sets all RGB pins to OUTPUT mode.
+ */
 void setup() {
-
-    // TODO 4:
-    // Initialize Serial communication (9600 baud)
-
-    // TODO 5:
-    // Configure RGB pins as OUTPUT
-
-    // TODO 6:
-    // Print initialization message
+    pinMode(red_led, OUTPUT);
+    pinMode(green_led, OUTPUT);
+    pinMode(blue_led, OUTPUT);
 }
 
+/**
+ * @brief Main loop to cycle RGB colors.
+ *
+ * This function continuously runs and changes the LED colors
+ * every 1 second using digitalWrite() and delay().
+ */
 void loop() {
 
-    // -------- DIGITAL MODE --------
+    /// Display Red
+    digitalWrite(red_led, HIGH);
+    digitalWrite(green_led, LOW);
+    digitalWrite(blue_led, LOW);
+    delay(1000);
 
-    // TODO 7:
-    // Turn ON red (digital HIGH)
+    /// Display Green
+    digitalWrite(red_led, LOW);
+    digitalWrite(green_led, HIGH);
+    digitalWrite(blue_led, LOW);
+    delay(1000);
 
-    // TODO 8:
-    // Turn OFF red
+    /// Display Blue
+    digitalWrite(red_led, LOW);
+    digitalWrite(green_led, LOW);
+    digitalWrite(blue_led, HIGH);
+    delay(1000);
 
-    // -------- ANALOG (PWM) MODE --------
+    /// Display Brown (Red + Green)
+    digitalWrite(red_led, HIGH);
+    digitalWrite(green_led, HIGH);
+    digitalWrite(blue_led, LOW);
+    delay(1000);
 
-    // TODO 9:
-    // Set RED brightness using analogWrite()
+    /// Display Purple (Red + Blue)
+    digitalWrite(red_led, HIGH);
+    digitalWrite(green_led, LOW);
+    digitalWrite(blue_led, HIGH);
+    delay(1000);
 
-    // TODO 10:
-    // Set GREEN brightness using analogWrite()
+    /// Display Cyan (Green + Blue)
+    digitalWrite(red_led, LOW);
+    digitalWrite(green_led, HIGH);
+    digitalWrite(blue_led, HIGH);
+    delay(1000);
 
-    // TODO 11:
-    // Set BLUE brightness using analogWrite()
-
-    // TODO 12:
-    // Add delay for visible transition
+    /// Display White (Red + Green + Blue)
+    digitalWrite(red_led, HIGH);
+    digitalWrite(green_led, HIGH);
+    digitalWrite(blue_led, HIGH);
+    delay(1000);
 }
