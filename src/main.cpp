@@ -35,6 +35,7 @@ void setup() {
  * This function continuously runs and changes the LED colors
  * every 1 second using digitalWrite() and delay().
  */
+
 void loop() {
 
     /// Display Red
